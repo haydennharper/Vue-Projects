@@ -1,27 +1,26 @@
 <html>
-    <head>
-        <title>Vue 3 Example</title>
-        <script src="https://unpkg.com/vue@3"></script>
-    </head>
+  <head>
+    <title>Vue 3 Example</title>
+    <script src="https://unpkg.com/vue@3"></script>
+  </head>
 
-    <body>
+  <body>
+    <div id="app">
+      <p>Counter: {{counter}}</p>
+      <button @click="counter++">Add</button>
+      <button @click="counter--">Subtract</button>
+      <p v-if="counter >= 10">Please wait.</p>
+    </div>
 
-        <div id="app">
-            <p>Counter: {{counter}}</p>
-            <button @click="counter++">Add</button>
-            <button @click="counter--">Subtract</button>
-            <p v-if="counter >= 10">Please wait.</p>
-        </div>
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        setup() {
+          const counter = ref(0);
 
-        <script>
-            const { createApp, ref } = Vue;
-            createApp({
-                setup() {
-                    const counter = ref(0);
-
-                    return {counter}
-                }
-            }).mount('#app')
-        </script>
-    </body>
+          return { counter };
+        },
+      }).mount("#app");
+    </script>
+  </body>
 </html>
